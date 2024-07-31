@@ -1,0 +1,85 @@
+@mixin mobile {
+  @media (max-width: $sm-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $md-max) {
+    @content;
+  }
+}
+
+@mixin sizes($size) {
+  @if $size == h1 {
+    font-size: 58px;
+    font-weight: bold;
+    line-height: 68px;
+    @include mobile {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  } @else if $size == h2 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 56px;
+    @include mobile {
+      font-size: 22px;
+      line-height: 26px;
+    }
+  } @else if $size == h3 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 48px;
+    @include tablet {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    @include mobile {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  } @else if $size == h4 {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 32px;
+    @include tablet {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    @include mobile {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  } @else if $size == text-l {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    @include mobile {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  } @else if $size == text-m {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  } @else if $size == text-s {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+  } @else {
+    @error "Необходим размер!";
+  }
+}
+
+@mixin icon {
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,315 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  padding-top: 64px;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  @include sizes(text-l);
+  color: $dark;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+img{
+  max-width: 100%;
+  vertical-align: middle;
+}
+a{
+  color: inherit;
+  transition: color .3s ease-in-out;
+}
+section{
+  padding: 120px 0;
+  @include tablet {
+      padding: 50px 0;
+  }
+  @include mobile {
+      padding: 25px 0;
+  }
+  h2{
+    margin-bottom: 40px;
+  }
+}
+.wrapper{
+  width: 1268px;
+  margin: 0 auto;
+  padding: 0 16px;
+  @include tablet{
+      width: 768px;
+      padding: 0 44px;
+  }
+  @include mobile {
+      width: 360px;
+      padding: 0 16px;
+  }
+}
+.logo{
+  width: 145px;
+  @include tablet {
+      width: 116px;
+  }
+}
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: $white;
+  box-shadow: 0px 2px 6px rgba($dark, .1);
+  .header-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    height: 64px;
+    @include tablet {
+      justify-content: flex-start;
+    }
+    .burger{
+      display: none;
+      border: 0;
+      padding: 10px 7px;
+      width: 40px;
+      height: 40px;
+      background: url('../img/burger.svg') transparent no-repeat center / 27px;
+      margin-right: 24px;
+      cursor: pointer;
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+  @include tablet {
+      .navigation{
+        display: none;
+      }
+      .browser-download-btn{
+        display: none;
+      }
+  }
+}
+.footer{
+  background-color: $light-grey;
+  .footer-links{
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include tablet {
+        flex-direction: column;
+    }
+    @include mobile {
+        padding: 36px 0;
+    }
+    .footer-socials{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .footer-social-links{
+        margin-left: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 40px;
+        @include mobile {
+          margin-left: 24px;
+        }
+        a{
+          &:hover{
+            color: $blue;
+          }
+          & + a{
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+    .footer-map{
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 28px;
+      @include sizes(text-m);
+      @include tablet {
+        margin-top: 36px;
+      }
+      @include mobile {
+        margin-top: 24px;
+          gap: 16px;
+      }
+    }
+  }
+  .footer-bottom{
+    @include sizes(text-s);
+    border-top: 2px solid $grey;
+    color: $dark-grey;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include tablet {
+        flex-direction: column-reverse;
+      align-items: flex-start;
+      justify-content: flex-start;
+      * + *{
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+.footer-navigation{
+  color: $dark-grey;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  .navigation-item{
+    padding: 8px 0;
+    min-width: 188px;
+    text-decoration: none;
+    @include mobile {
+        min-width: 156px;
+    }
+    &:hover{
+      color: $dark;
+      text-decoration: underline;
+    }
+    & + .navigation-item{
+      margin-top: 12px;
+    }
+  }
+}
+.navigation{
+  .navigation-item{
+    position: relative;
+    color: $dark-grey;
+    padding: 9px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    height: 64px;
+    transition: color .1s ease-in-out, background-color .1s ease-in-out, box-shadow .1s ease-in-out;
+    &:hover{
+      transition: color .3s ease-in-out, background-color .3s ease-in-out;
+      color: $dark;
+      background-color: $light-grey;
+    }
+    &:active{
+      transition: box-shadow .3s ease-in-out;
+      box-shadow: inset 0 0 0 2px $blue;
+    }
+    &.active{
+      &::after{
+        content: '';
+        position: absolute;
+        bottom: -11px;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $blue;
+      }
+    }
+  }
+}
+.mobile-menu{
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  transition: background-color .2s ease-in-out;
+  @include tablet {
+    display: block;
+  }
+  &.active{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    clip: initial;
+    background-color: rgba($dark, .3);
+    @include tablet {
+      display: block;
+    }
+    .mobile-menu-block{
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .mobile-menu-block{
+    position: absolute;
+    top: 0;
+    left: calc((100vw - 768px) / 2 + 44px);
+    background-color: $white;
+    width: 400px;
+    height: 100%;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+    transform: translateX(-100%);
+    opacity: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    @include mobile {
+        width: 274px;
+      left: calc((100vw - 360px) / 2 + 16px);
+    }
+    &::before{
+      content: '';
+      position: absolute;
+      left: calc((-100vw + 768px) / 2 - 44px);
+      width: calc((100vw - 768px) / 2 + 44px);
+      height: 100%;
+      background-color: $white;
+      @include mobile {
+        left: calc((-100vw + 360px) / 2 - 16px);
+        width: calc((100vw - 360px) / 2 + 16px);
+      }
+    }
+    .close{
+      position: absolute;
+      top: 12px;
+      right: -52px;
+      border: 0;
+      width: 40px;
+      height: 40px;
+      background: url('../img/close.svg') transparent no-repeat center / 27px;
+      cursor: pointer;
+    }
+    .mobile-menu-header{
+      height: 64px;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      box-shadow: 0px 2px 6px rgba($dark, .1);
+    }
+    .mobile-menu-body{
+      padding: 24px 16px;
+    }
+    .mobile-menu-footer{
+      box-shadow: 0px -2px 6px rgba($dark, 0.1);
+      padding: 0 16px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+    }
+
+  }
+}
+.mobile-menu-navigation{
+  .navigation-item{
+    color: $dark-grey;
+    display: block;
+    padding: 16px 12px;
+    text-decoration: none;
+    &:hover{
+      color: $dark;
+    }
+  }
+}

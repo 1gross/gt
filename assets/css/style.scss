@@ -1,0 +1,845 @@
+@import "variables";
+@import "mixins";
+@import "animations";
+@import "ui";
+@import "global";
+
+.browser-section {
+  @include tablet {
+    overflow: hidden;
+  }
+
+  .browser-section-block {
+    position: relative;
+    height: 632px;
+    @include tablet {
+      height: 756px;
+    }
+    @include mobile {
+      height: 666px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -176px;
+      left: -168px;
+      display: block;
+      width: 312px;
+      height: 312px;
+      border-radius: 50%;
+      border: 4px solid #F9AB00;
+      @include tablet {
+        display: none;
+      }
+    }
+
+    .browser-title {
+      font-size: 60px;
+      font-weight: 500;
+      line-height: 76px;
+      @include tablet {
+        font-size: 36px;
+        line-height: 44px;
+      }
+      @include mobile {
+        font-size: 28px;
+        line-height: 36px;
+      }
+
+      &::before {
+        content: '';
+        display: inline-flex;
+        vertical-align: sub;
+        margin-right: 12px;
+        width: 64px;
+        height: 64px;
+        background: url('../img/logo.svg') no-repeat center / cover;
+        @include tablet {
+          width: 40px;
+          height: 40px;
+        }
+        @include mobile {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    }
+
+    .browser-description {
+      margin-top: 40px;
+      font-size: 20px;
+      color: $dark-grey;
+      @include tablet {
+        margin-top: 28px;
+      }
+      @include mobile {
+        font-size: 18px;
+        margin-top: 16px;
+      }
+    }
+
+    .browser-download-btn {
+      margin-top: 64px;
+      @include tablet {
+        margin-top: 40px;
+      }
+      @include mobile {
+        margin-top: 28px;
+      }
+    }
+
+    .browser-slider-block {
+      position: absolute;
+      right: -223px;
+      bottom: -120px;
+      @include tablet {
+        left: 0;
+        right: inherit;
+        bottom: -172px;
+      }
+      @include mobile {
+        bottom: 25px;
+      }
+    }
+
+    .figures-block {
+      position: absolute;
+      top: -120px;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      @include tablet {
+        top: -80px
+      }
+
+      .rectangle {
+        position: absolute;
+
+        &.vertical {
+          top: -64px;
+          right: -100px;
+          width: 348px;
+          height: 100%;
+          background-color: $light-blue;
+          @include tablet {
+            right: -140px;
+          }
+          @include mobile {
+            right: -195px;
+          }
+        }
+
+        &.horizontal {
+          bottom: -46px;
+          right: -100px;
+          width: 922px;
+          height: 348px;
+          background-color: #8AB4F8;
+          border-radius: 12px 0 0 12px;
+          @include tablet {
+            right: -198px;
+            bottom: -80px;
+          }
+          @include mobile {
+            width: 360px;
+            height: 208px;
+            right: -8px;
+            bottom: 0;
+            border-radius: 8px;
+
+          }
+        }
+      }
+
+      .circle {
+        border-radius: 50%;
+        position: absolute;
+
+        &.blue {
+          width: 324px;
+          height: 324px;
+          background-color: $blue;
+          right: 18px;
+          top: 112px;
+          @include tablet {
+            width: 236px;
+            height: 236px;
+            right: 0px;
+            top: 262px;
+          }
+          @include mobile {
+            width: 200px;
+            height: 200px;
+            right: -14px;
+            top: 350px
+          }
+        }
+
+        &.yellow {
+          width: 46px;
+          height: 46px;
+          background-color: #F9AB00;
+          right: 294px;
+          top: 45px;
+          @include tablet {
+            width: 28px;
+            height: 28px;
+            right: 94px;
+            top: 75px;
+          }
+          @include mobile {
+            width: 16px;
+            height: 16px;
+            right: 176px;
+            top: 350px
+          }
+        }
+
+        &.outline {
+          width: 100px;
+          height: 100px;
+          border: 4px solid $dark;
+          right: 379px;
+          top: 93px;
+          @include tablet {
+            width: 80px;
+            height: 80px;
+            right: 160px;
+            top: 134px;
+          }
+          @include mobile {
+            width: 32px;
+            height: 32px;
+            top: 370px;
+            right: 196px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.browser-slider-block {
+  width: 952px;
+  @include mobile {
+    width: 556px;
+  }
+
+  .browser-slider {
+    background-color: $white;
+    position: relative;
+    height: 510px;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    @include mobile {
+      height: 250px;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity .7s ease-in-out;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+
+    .search {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include tablet {
+        width: 564px;
+      }
+      @include mobile {
+        width: 332px;
+      }
+    }
+
+    .bullets {
+      position: absolute;
+      left: 40px;
+      top: 296px;
+      @include tablet {
+        top: 266px;
+      }
+      @include mobile {
+        left: 24px;
+        top: 152px;
+      }
+
+      &[data-bg="white"] {
+        .bullet {
+          background-color: rgba($white, .35);
+        }
+      }
+
+      &[data-bg="black"] {
+        .bullet {
+          background-color: rgba($dark, .35);
+        }
+      }
+
+      .bullet {
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background-color: var(--bullet-bg);
+        transition: width .7s ease-in-out;
+        @include mobile {
+          width: 12px;
+        }
+
+        & + .bullet {
+          margin-top: 12px;
+          @include mobile {
+            margin-top: 8px;
+          }
+        }
+
+        &.active {
+          width: 40px;
+          @include mobile {
+            width: 24px;
+          }
+
+          .bullet-progress {
+            width: 100%;
+            transition: width 3s ease-in-out .7s;
+          }
+        }
+
+        .bullet-progress {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          transition: width .7s ease-in-out;
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+.chrome-animation {
+  overflow: hidden;
+
+  &.active {
+    img {
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1, 1, 1;
+      animation-timing-function: ease-in, ease-in, ease-out;
+      animation-name: chromeAnimationStep1, chromeAnimationStep2, chromeAnimationStep3;
+      animation-delay: 0s, 700ms, 1500ms;
+      animation-duration: 600ms, 800ms, 600ms;
+    }
+  }
+
+  img {
+    position: relative;
+    left: 0;
+    transform: translateX(calc(-100% - 80px));
+    @include tablet {
+      width: 80px;
+    }
+    @include mobile {
+      transform: translateX(calc(-100% - 40px));
+      width: 40px;
+    }
+  }
+}
+
+.key-animation-block {
+  width: 158px;
+  @include mobile {
+    width: 90px;
+    height: 47px;
+  }
+  .key-animation {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background-color: $blue;
+    @include tablet {
+      width: 64px;
+      height: 64px;
+    }
+    @include mobile {
+      transform: scale(.5);
+    }
+
+    &::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $light-blue;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include tablet {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &.active {
+      .key-rectangle {
+        animation: keyAnimationRectangle 1s ease-out forwards;
+      }
+
+      .key-crown {
+        animation: keyAnimationCrown 400ms 1s ease-out forwards;
+      }
+    }
+
+    .key-rectangle {
+      overflow: hidden;
+      width: 105px;
+      height: 26px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(10px, -50%);
+      @include tablet {
+        height: 20px;
+        width: 81px;
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        width: 105px;
+        height: 26px;
+        background: linear-gradient(to right, #D94B39, #D94B39 33.33%, #FBC010 33.33%, #FBC010 66.66%, #1B7D3A 66.66%);
+      }
+    }
+
+    .key-crown {
+      overflow: hidden;
+      width: 35px;
+      height: 0;
+      background-color: #1B7D3A;
+      position: absolute;
+      right: -73px;
+      top: 55px;
+      @include tablet {
+        right: -83px;
+        top: 41px;
+      }
+
+      &::before {
+        content: '';
+        background-color: $light-blue;
+        height: 14px;
+        width: 12px;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        top: 0;
+      }
+    }
+  }
+}
+
+.features-slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+  @include mobile {
+    gap: 36px;
+  }
+
+  .arrow {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: $white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    box-shadow: 0 2px 2px rgba($white, 0.1), 0 2px 6px rgba($dark, 0.2);
+    transition: color .1s ease-in-out;
+    @include tablet {
+      display: block;
+    }
+    @include mobile {
+      transform: translateY(-50%);
+      top: inherit;
+    }
+
+    &:active {
+      color: $dark-blue;
+      transition: color .3s ease-in-out;
+    }
+
+    &.arrow-prev {
+      left: 50px;
+      @include mobile {
+        left: 86px;
+      }
+    }
+
+    &.arrow-next {
+      right: 50px;
+      @include mobile {
+        right: 86px;
+      }
+    }
+  }
+
+  .features-slider-wrapper {
+    @include tablet {
+      position: relative;
+      padding: 0 120px;
+    }
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  .features-slider-slides {
+    background-color: $white;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 620px;
+    @include tablet {
+      height: 444px;
+    }
+    @include mobile {
+      height: 328px;
+    }
+
+    .features-slider-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity .7s ease-in-out;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .features-slider-bullet-wrapper {
+    padding: 0 100px;
+    @include tablet {
+      padding: 0;
+      position: relative;
+      margin: 0 120px;
+    }
+    @include mobile {
+      margin: 0;
+    }
+
+    .browser-download-btn {
+      margin-top: 60px;
+      @include tablet {
+        margin-top: 40px;
+      }
+      @include mobile {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  .features-slider-bullets {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    @include tablet {
+      height: 104px;
+    }
+
+    .features-slider-bullet {
+      cursor: pointer;
+      position: relative;
+      padding-left: 36px;
+      @include tablet {
+        transition: opacity .2s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      & + .features-slider-bullet {
+        margin-top: 36px;
+        @include tablet {
+          margin-top: 0;
+        }
+      }
+
+      &.active {
+        @include tablet {
+          transition: opacity .7s ease-in-out;
+          opacity: 1;
+        }
+
+        .features-slider-bullet-progress {
+          .features-slider-bullet-progress-active {
+            height: 100%;
+            transition: height 3s ease-in-out .7s;
+          }
+        }
+      }
+
+      .features-slider-bullet-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $light-grey;
+        width: 4px;
+        height: 100%;
+
+        .features-slider-bullet-progress-active {
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: $blue;
+          width: 4px;
+          height: 0px;
+          transition: height .1s ease-in-out;
+        }
+      }
+
+      .features-slider-bullet-title {
+        margin-bottom: 12px;
+      }
+
+      .features-slider-bullet-description {
+        transition: height .7s ease-in-out;
+        overflow: hidden;
+        height: 0;
+        color: $dark-grey;
+      }
+    }
+  }
+}
+
+.capability-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 416px;
+  gap: 28px;
+  @include tablet {
+    grid-auto-rows: 350px;
+  }
+  @include mobile {
+    display: block;
+  }
+
+  .capability-item {
+    position: relative;
+    border-radius: 20px;
+    padding: 40px 64px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    @include tablet {
+      padding: 28px 40px 32px;
+    }
+    @include mobile {
+      padding: 24px;
+      height: 212px;
+      & + .capability-item {
+        margin-top: 12px;
+      }
+    }
+
+    &:nth-child(3n), &:nth-child(3n - 1) {
+      background: $dark-blue;
+      color: $white;
+      grid-row: span 2;
+      @include mobile {
+        height: 568px;
+      }
+    }
+
+    &.speed {
+      box-shadow: 0 2px 2px rgba($white, 0.1), 0 2px 6px rgba($dark, 0.2);
+
+      .capability-description {
+        color: $dark-grey;
+      }
+
+      .chrome-animation {
+        padding: 0 64px;
+        margin: auto -64px 0;
+        @include tablet {
+          padding: 0 40px;
+          margin: auto -40px 0;
+        }
+        @include mobile {
+          padding: 0 24px;
+          margin: auto -24px 0;
+        }
+      }
+    }
+
+    &.secure {
+      background-color: $light-blue;
+
+      .capability-description {
+        color: $dark-grey;
+      }
+
+      .key-animation-block {
+        margin: auto 0 0 auto;
+      }
+    }
+
+    &.integration {
+      .capability-img {
+        position: absolute;
+        bottom: -338px;
+        right: -39px;
+        width: 520px;
+        @include tablet {
+          width: 327px;
+          right: inherit;
+          left: 40px;
+          bottom: -118px;
+        }
+        @include mobile {
+          width: 343px;
+          right: inherit;
+          left: 24px;
+          bottom: -214px;
+        }
+      }
+    }
+
+    &.extensions {
+      .capability-img {
+        position: absolute;
+        bottom: -162px;
+        right: 50%;
+        width: 420px;
+        transform: translateX(50%);
+        @include tablet {
+          width: 276px;
+          bottom: -12px;
+        }
+        @include mobile {
+          bottom: -100px;
+        }
+      }
+    }
+
+    .capability-description {
+      margin-top: 12px;
+    }
+
+    .capability-img {
+      img {
+        width: 100%;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+.faq-list {
+  padding: 0 108px;
+  @include tablet {
+    padding: 0;
+  }
+
+  .faq-item {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid $grey;
+    overflow: hidden;
+    transition: border-color .3s ease-in-out;
+    @include mobile {
+      padding: 12px 0 12px;
+    }
+    &:focus {
+      border-color: $blue;
+    }
+
+    &.active {
+      .faq-item-title {
+        &::after {
+          transform: scale(-1);
+        }
+      }
+    }
+
+    .faq-item-title {
+      color: $blue;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      span {
+        padding-right: 20px;
+      }
+
+      &::after {
+        content: '\f107';
+        transition: transform .3s ease-in-out;
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+      }
+    }
+
+    .faq-item-description {
+      width: 728px;
+      height: 0;
+      @include sizes(text-m);
+      color: $dark-grey;
+      overflow: hidden;
+      transition: height .3s ease-in-out;
+      @include mobile {
+        width: 100%;
+      }
+      &::before {
+        content: '';
+        display: block;
+        margin-top: 28px;
+        @include mobile {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
